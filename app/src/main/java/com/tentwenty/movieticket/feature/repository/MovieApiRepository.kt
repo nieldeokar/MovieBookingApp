@@ -1,13 +1,11 @@
 package com.tentwenty.movieticket.feature.repository
 
-import android.arch.persistence.room.Room
 import android.content.Context
+import android.util.Log
 import com.tentwenty.movieticket.feature.shared.model.Movie
-import com.tentwenty.movieticket.feature.shared.model.MovieResponse
 import com.tentwenty.movieticket.network.ApiService
-import com.tentwenty.movieticket.room.AppDatabase
+import com.tentwenty.movieticket.room.MovieDao
 import com.tentwenty.movieticket.utils.constants.ApiConstants
-import com.tentwenty.movieticket.utils.constants.DBConstants
 import io.reactivex.Single
 import io.reactivex.SingleEmitter
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -22,12 +20,15 @@ class MovieApiRepository @Inject constructor() {
     @Inject
     lateinit var context: Context
 
+    @Inject
+    lateinit var moviesDao : MovieDao
+
+
     fun getData(): Single<List<Movie>> = getDataFromDb()
 
     private fun getDataFromDb(): Single<List<Movie>> =
             Single.create { e ->
-                val appDatabase = Room.databaseBuilder(context, AppDatabase::class.java, DBConstants.DB_NAME).build()
-                val moviesDao = appDatabase.moviesDao()
+
                 moviesDao.getAllMovies()
                         .subscribeOn(Schedulers.newThread())
                         .observeOn(AndroidSchedulers.mainThread())
@@ -44,14 +45,13 @@ class MovieApiRepository @Inject constructor() {
 
     private fun insertToDatabase(dataList: List<Movie>) =
             Single.create<String> { e ->
-                val appDatabase = Room.databaseBuilder(context, AppDatabase::class.java, DBConstants.DB_NAME).build()
-                val movieDao = appDatabase.moviesDao()
-                //insert user to Room
                 try {
-                    movieDao.insert(dataList)
+                    moviesDao.insert(dataList)
+                    Log.d("MovieApiRepository","SuccessInsert")
                     e.onSuccess("Successful")
                 } catch (exception: IllegalStateException) {
                     e.onError(exception)
+                    Log.d("MovieApiRepository","Success")
                 }
             }
 
