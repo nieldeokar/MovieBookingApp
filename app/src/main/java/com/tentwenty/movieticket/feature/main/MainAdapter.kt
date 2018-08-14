@@ -10,6 +10,7 @@ import com.tentwenty.movieticket.feature.shared.model.Movie
 import com.tentwenty.movieticket.utils.constants.ApiConstants
 import kotlinx.android.synthetic.main.item_movie.view.*
 import com.tentwenty.movieticket.feature.main.MainAdapter.ClickListener
+import com.tentwenty.movieticket.utils.util.Utils
 import java.security.InvalidParameterException
 
 
@@ -26,7 +27,7 @@ class MainAdapter : RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
         val data = myList[position]
 
         holder.titleText?.text = data.title
-        holder.releaseDate?.text = data.releaseDate
+        holder.releaseDate?.text = Utils.convertDate(data.releaseDate)
         holder.isAdult?.text = if (data.adult) "18+" else "Non adult"
 
         Picasso.get()

@@ -116,7 +116,6 @@ class SeatSelectionActivity : BaseActivity<SeatSelectionView, SeatSelectionPrese
 
             moveToPaymentActivity()
 
-
         }else if (::mTheaterLayoutList.isInitialized) {
 
             val positionArray = (view!!.tag as String).split(",")
