@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Ten twenty app</string>
+
+    <string name="loading">Loading</string>
+    <string name="image_thumbnail">Image</string>
+    <string name="seat_selection">Seat selection</string>
+</resources>
