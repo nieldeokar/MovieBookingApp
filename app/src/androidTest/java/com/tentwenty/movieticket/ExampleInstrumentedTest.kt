@@ -27,19 +27,19 @@ class ExampleInstrumentedTest {
     companion object {
         private const val JSON_STRING = "[\n" +
                 "  {\n" +
-                "    \"rowName\": \"A\",\n" +
+                "    \"row\": \"A\",\n" +
                 "    \"values\": [1,1,0,0,1,1]\n" +
                 "  },\n" +
                 "  {\n" +
-                "    \"rowName\": \"B\",\n" +
+                "    \"row\": \"B\",\n" +
                 "    \"values\": [1,1,0,0,1,1]\n" +
                 "  },\n" +
                 "  {\n" +
-                "    \"rowName\": \"C\",\n" +
+                "    \"row\": \"C\",\n" +
                 "    \"values\": [1,1,0,0,1,1]\n" +
                 "  },\n" +
                 "  {\n" +
-                "    \"rowName\": \"D\",\n" +
+                "    \"row\": \"D\",\n" +
                 "    \"values\": [1,1,1,1,1,1]\n" +
                 "  }\n" +
                 "]"
@@ -56,14 +56,13 @@ class ExampleInstrumentedTest {
     fun testGsonDeserializer() {
 
 
-        val gsonBuilder = GsonBuilder()
-        gsonBuilder.registerTypeAdapter(object : TypeToken<List<TheaterLayoutNew>>() {}.type, NaturalDeserializer())
-        val gson = Gson()
-        val targetCollection = gson.fromJson(JSON_STRING, JSONResponse::class.java)
+        val gson = GsonBuilder().create()
 
-//        Log.d("A","${targetCollection.size}  a ${targetCollection[0]}")
+        val theaterRows = gson.fromJson(JSON_STRING, Array<TheaterLayout>::class.java)
 
-        assertThat(targetCollection, instanceOf(ArrayList::class.java))
+        theaterRows.forEach {
+            print("Row details: " + it.rowName +" +"+it.values[0])
+        }
 
 
     }

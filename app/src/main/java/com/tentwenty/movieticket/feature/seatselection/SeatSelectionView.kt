@@ -5,5 +5,5 @@ import com.tentwenty.movieticket.feature.shared.model.TheaterLayout
 
 
 interface SeatSelectionView: BaseView {
-    fun renderSeats(seatsList: ArrayList<TheaterLayout>)
+    fun renderSeats(seatsList: Array<TheaterLayout>)
 }

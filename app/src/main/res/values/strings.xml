@@ -4,4 +4,8 @@
     <string name="loading">Loading</string>
     <string name="image_thumbnail">Image</string>
     <string name="seat_selection">Seat selection</string>
+    <string name="screen_here">Screen here</string>
+
+
+    <string name="book_text">Book <b>%s</b></string>
 </resources>

@@ -8,7 +8,6 @@
 
     <include
         layout="@layout/toolbar"
-        app:layout_constraintBottom_toTopOf="@+id/tableLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -17,13 +16,50 @@
     <TableLayout
         android:id="@+id/tableLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="422dp"
         android:layout_marginBottom="@dimen/padding_8dp"
-        android:layout_marginEnd="@dimen/padding_8dp"
-        android:layout_marginLeft="@dimen/padding_8dp"
-        android:layout_marginRight="@dimen/padding_8dp"
-        android:layout_marginStart="@dimen/padding_8dp"
-        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_marginEnd="@dimen/padding_16dp"
+        android:layout_marginLeft="@dimen/padding_16dp"
+        android:layout_marginRight="@dimen/padding_16dp"
+        android:layout_marginStart="@dimen/padding_16dp"
+        android:layout_marginTop="@dimen/padding_8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvScreen"
+        app:layout_constraintVertical_bias="1.0"
+        />
+
+    <TextView
+        android:id="@+id/tvScreen"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginEnd="@dimen/padding_16dp"
+        android:layout_marginLeft="@dimen/padding_16dp"
+        android:layout_marginRight="@dimen/padding_16dp"
+        android:layout_marginStart="@dimen/padding_16dp"
+        android:layout_marginTop="@dimen/padding_16dp"
+        android:text="@string/screen_here"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:background="#f386c1f2"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <TextView
+        android:id="@+id/btnBookTicket"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Book "
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textColor="@android:color/white"
+        android:background="#d41d1d"
+        android:visibility="gone"
+        android:onClick="onClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

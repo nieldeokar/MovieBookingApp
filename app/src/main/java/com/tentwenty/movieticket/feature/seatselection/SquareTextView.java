@@ -5,6 +5,7 @@ import android.graphics.Typeface;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.MotionEvent;
 
 import com.tentwenty.movieticket.R;
@@ -41,6 +42,7 @@ public class SquareTextView extends AppCompatTextView {
         setAlphaOnTextColor();
         setText(getText());
         setTypeface(Typeface.DEFAULT_BOLD);
+        setGravity(Gravity.CENTER);
     }
 
     void setAlphaOnTextColor() {
@@ -62,7 +64,6 @@ public class SquareTextView extends AppCompatTextView {
                 setTextColor(ContextCompat.getColor(getContext(),  android.R.color.white));
                 setBackgroundColor(ContextCompat.getColor(getContext(),android.R.color.holo_green_dark));
                 break;
-
         }
     }
 
@@ -78,8 +79,8 @@ public class SquareTextView extends AppCompatTextView {
 
     }
 
-    public void setmTextType(int mTextType) {
+    public void setTextType(int mTextType) {
         this.mTextType = mTextType;
-        invalidate();
+        requestLayout();
     }
 }

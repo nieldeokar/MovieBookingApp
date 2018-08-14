@@ -14,12 +14,16 @@ class SeatSelectionApiRepository @Inject constructor(){
     @Inject
     lateinit var context: Context
 
-    fun getData(): List<TheaterLayout> = getTheaterLayout()
+    fun getData(): Array<TheaterLayout> = getTheaterLayout()
 
-    private fun getTheaterLayout(): List<TheaterLayout> {
+    private fun getTheaterLayout(): Array<TheaterLayout> {
         val jsonStr = getJsonFromAssets()
         Log.d("A",jsonStr)
-        return GsonBuilder().create().fromJson(jsonStr,ArrayList<TheaterLayout>()::class.java)
+        val gson = GsonBuilder().create()
+
+
+        return  gson.fromJson(jsonStr, Array<TheaterLayout>::class.java)
+
 
     }
 
