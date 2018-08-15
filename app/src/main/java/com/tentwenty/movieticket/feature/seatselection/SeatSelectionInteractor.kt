@@ -4,5 +4,5 @@ import com.tentwenty.movieticket.feature.repository.SeatSelectionApiRepository
 import javax.inject.Inject
 
 class SeatSelectionInteractor @Inject constructor(private val selectionApiRepository: SeatSelectionApiRepository) {
-    fun getSittingArrangement() = selectionApiRepository.getData()
+    fun getSittingArrangement(showId : Int) = selectionApiRepository.getData(showId)
 }

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.LinearLayoutManager
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import com.tentwenty.movieticket.R
@@ -76,7 +77,6 @@ class ShowTimesActivity : BaseActivity<ShowTimesView, ShowTimesPresenter>(), Sho
         startActivity(intent)
     }
 
-
     override fun renderShowTimes(movieShowTimes: List<MovieShowTimes>) {
         if(movieShowTimes.isEmpty()){
             tvError.visibility = View.VISIBLE
@@ -86,5 +86,10 @@ class ShowTimesActivity : BaseActivity<ShowTimesView, ShowTimesPresenter>(), Sho
             rcyclerShowTimes.visibility = View.VISIBLE
             showTimesAdapter.setData(movieShowTimes)
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) onBackPressed()
+        return super.onOptionsItemSelected(item)
     }
 }

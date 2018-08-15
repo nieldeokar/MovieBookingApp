@@ -1,9 +1,9 @@
 package com.tentwenty.movieticket.feature.seatselection
 
 import com.tentwenty.movieticket.feature.base.BaseView
-import com.tentwenty.movieticket.feature.shared.model.CinemaEntity
+import com.tentwenty.movieticket.feature.shared.model.ShowTimeEntity
 
 
 interface SeatSelectionView: BaseView {
-    fun renderSeats(cinemaEntity: CinemaEntity)
+    fun renderSeats(showTimeEntity: ShowTimeEntity)
 }

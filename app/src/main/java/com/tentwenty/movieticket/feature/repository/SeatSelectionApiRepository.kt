@@ -3,7 +3,7 @@ package com.tentwenty.movieticket.feature.repository
 import android.content.Context
 import android.util.Log
 import com.google.gson.GsonBuilder
-import com.tentwenty.movieticket.feature.shared.model.CinemaEntity
+import com.tentwenty.movieticket.feature.shared.model.ShowTimeEntity
 import com.tentwenty.movieticket.feature.shared.model.TheaterLayout
 import com.tentwenty.movieticket.room.AppDatabase
 import com.tentwenty.movieticket.utils.constants.DBConstants
@@ -20,7 +20,7 @@ class SeatSelectionApiRepository @Inject constructor(){
     @Inject
     lateinit var context: Context
 
-    fun getData(): Single<CinemaEntity>  = getDataFromDb()
+    fun getData(showId : Int): Single<ShowTimeEntity>  = getDataFromDb(showId)
 
     private fun getTheaterLayout(): Array<TheaterLayout> {
         val jsonStr = getJsonFromAssets()
@@ -33,11 +33,11 @@ class SeatSelectionApiRepository @Inject constructor(){
 
     }
 
-    private fun getDataFromDb(): Single<CinemaEntity> =
+    private fun getDataFromDb(showId : Int): Single<ShowTimeEntity> =
             Single.create { e ->
-                val cinemaDao = AppDatabase.getInstance(context).cinemasDao()
+                val showTimesDao = AppDatabase.getInstance(context).showTimesDao()
 
-                cinemaDao.getCinemaById((0 until 5).random())
+                showTimesDao.getShowTimeById(showId)
                         .subscribeOn(Schedulers.newThread())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe({ dataEntity ->

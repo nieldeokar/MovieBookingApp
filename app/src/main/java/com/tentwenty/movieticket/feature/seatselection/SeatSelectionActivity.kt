@@ -12,7 +12,7 @@ import android.widget.Toast
 import com.tentwenty.movieticket.R
 import com.tentwenty.movieticket.TenTwentyApp
 import com.tentwenty.movieticket.feature.base.BaseActivity
-import com.tentwenty.movieticket.feature.shared.model.CinemaEntity
+import com.tentwenty.movieticket.feature.shared.model.ShowTimeEntity
 import com.tentwenty.movieticket.feature.shared.model.TheaterLayout
 import kotlinx.android.synthetic.main.activity_seat_selection.*
 import kotlinx.android.synthetic.main.toolbar.*
@@ -53,7 +53,7 @@ class SeatSelectionActivity : BaseActivity<SeatSelectionView, SeatSelectionPrese
             tableLayout.isStretchAllColumns = true
 
 
-            presenter.getData()
+            presenter.getData(intent.getIntExtra(BUNDLE_EXTRA_SHOW_TIME_ID,0))
         }else{
             Toast.makeText(this,"Unknown Source",Toast.LENGTH_SHORT).show()
         }
@@ -63,8 +63,8 @@ class SeatSelectionActivity : BaseActivity<SeatSelectionView, SeatSelectionPrese
 
     override fun createPresenter() = seatselectionPresenter
 
-    override fun renderSeats(cinemaEntity: CinemaEntity) {
-        mTheaterLayoutList = cinemaEntity.theaterLayout.getTheaterLayouts()!!
+    override fun renderSeats(showTimeEntity: ShowTimeEntity) {
+        mTheaterLayoutList = showTimeEntity.theaterLayout.getTheaterLayouts()!!
 
 
         val tableLayoutParams = TableLayout.LayoutParams()
