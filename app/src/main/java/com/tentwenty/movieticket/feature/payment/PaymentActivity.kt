@@ -25,7 +25,7 @@ class PaymentActivity : BaseActivity<PaymentView, PaymentPresenter>(), PaymentVi
     }
     @Inject lateinit var paymentPresenter: PaymentPresenter
 
-    var bookingSuccess = false
+    var isBookingSuccess = false
 
     var seatNumber: String = ""
 
@@ -81,7 +81,7 @@ class PaymentActivity : BaseActivity<PaymentView, PaymentPresenter>(), PaymentVi
         hideKeyBoard()
 
         if(orderId != 0L ) {
-            bookingSuccess = true
+            isBookingSuccess = true
             showToast(getString(R.string.booking_success))
             // This call should be inside BookingConfirmation Activity
             presenter.getOrderData(orderId)
@@ -110,7 +110,7 @@ class PaymentActivity : BaseActivity<PaymentView, PaymentPresenter>(), PaymentVi
     }
 
     override fun onBackPressed() {
-        if(bookingSuccess){
+        if(isBookingSuccess){
             redirectToMainActivity()
         }else{
             super.onBackPressed()

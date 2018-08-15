@@ -25,11 +25,13 @@
         </activity>
         <activity
             android:name=".feature.seatselection.SeatSelectionActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionbar" />
         <activity
             android:name=".feature.showtimes.ShowTimesActivity"
             android:theme="@style/AppTheme.NoActionbar" />
         <activity android:name=".feature.payment.PaymentActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionbar">
 
         </activity>
