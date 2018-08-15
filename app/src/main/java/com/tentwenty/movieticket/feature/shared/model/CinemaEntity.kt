@@ -27,7 +27,6 @@ class CinemaEntity(
         val location: String = "",
 
         @ColumnInfo(name = "theaterLayout")
-
         val theaterLayout: TheaterLayoutWrapper
 ) {
 

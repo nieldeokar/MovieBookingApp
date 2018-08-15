@@ -7,17 +7,19 @@ import android.arch.persistence.room.RoomDatabase
 import android.content.Context
 import com.tentwenty.movieticket.feature.shared.model.CinemaEntity
 import com.tentwenty.movieticket.feature.shared.model.Movie
-import com.tentwenty.movieticket.feature.shared.model.ShowTime
+import com.tentwenty.movieticket.feature.shared.model.ShowTimeEntity
 import com.tentwenty.movieticket.utils.constants.DBConstants
 import java.util.concurrent.Executors
 
 
-@Database(entities = [Movie::class, CinemaEntity::class, ShowTime::class], version = 1)
+@Database(entities = [Movie::class, CinemaEntity::class, ShowTimeEntity::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun moviesDao(): MovieDao
 
     abstract fun cinemasDao(): CinemaDao
+
+    abstract fun showTimesDao(): ShowTimeDao
 
 
     companion object {

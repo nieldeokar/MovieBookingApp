@@ -1,9 +1,8 @@
 package com.tentwenty.movieticket.feature.shared.model
 
-import android.arch.persistence.room.ColumnInfo
-import android.arch.persistence.room.Entity
-import android.arch.persistence.room.ForeignKey
-import android.arch.persistence.room.PrimaryKey
+import android.arch.persistence.room.*
+import com.tentwenty.movieticket.feature.shared.converter.DataConverter
+import com.tentwenty.movieticket.room.TheaterLayoutWrapper
 import com.tentwenty.movieticket.utils.constants.DBConstants
 
 @Entity(tableName = DBConstants.SHOW_TIME_TABLE_NAME,
@@ -17,27 +16,28 @@ import com.tentwenty.movieticket.utils.constants.DBConstants
                 childColumns = arrayOf("movie_id"),
                 onDelete = ForeignKey.CASCADE)
 ))
-class ShowTime {
+@TypeConverters(DataConverter::class)
+class ShowTimeEntity(
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    var id: Int = 0
+    var id: Int = 0,
 
     @ColumnInfo(name = "location")
-    var location: String = ""
+    var location: String = "",
 
     @ColumnInfo(name = "movie_id")
-    var movId : Int = 0
+    var movId : Int = 0,
 
     @ColumnInfo(name = "cinema_id")
-    var cinemaId: Int = 0
+    var cinemaId: Int = 0,
 
     @ColumnInfo(name = "time")
-    var timings: String = ""
+    var timings: String = "",
 
     @ColumnInfo(name = "seat_map")
-    var seatMap: String = ""
-}
+    val theaterLayout: TheaterLayoutWrapper
+)
 
 
 

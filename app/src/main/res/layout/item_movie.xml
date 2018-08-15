@@ -18,11 +18,15 @@
   <LinearLayout
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginRight="8dp"
-      android:layout_marginTop="10.5dp"
+      android:layout_marginRight="@dimen/padding_8dp"
+      android:layout_marginTop="@dimen/padding_8dp"
       android:layout_toRightOf="@id/posterPath"
       android:layout_toLeftOf="@+id/book"
-      android:orientation="vertical">
+      android:orientation="vertical"
+      android:layout_marginEnd="@dimen/padding_8dp"
+      android:layout_toStartOf="@+id/book"
+      android:layout_toEndOf="@id/posterPath">
+
 
     <TextView
         android:id="@+id/title"
@@ -37,13 +41,15 @@
         android:id="@+id/releaseDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/movieListRowSub" />
+        android:textColor="@color/movieListRowSub"
+        android:layout_marginTop="@dimen/padding_4dp"/>
 
     <TextView
         android:id="@+id/adult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/movieListRowSub" />
+        android:textColor="@color/movieListRowSub"
+        android:layout_marginTop="@dimen/padding_4dp"/>
 
     <TextView
         android:id="@+id/department"
@@ -51,6 +57,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/movieListRowSub"
         android:background="@drawable/text_bg"
+        android:layout_marginTop="@dimen/padding_4dp"
 
         />
   </LinearLayout>

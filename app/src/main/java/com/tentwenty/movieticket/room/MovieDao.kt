@@ -4,11 +4,8 @@ import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Insert
 import android.arch.persistence.room.OnConflictStrategy
 import android.arch.persistence.room.Query
-
 import com.tentwenty.movieticket.feature.shared.model.Movie
 import com.tentwenty.movieticket.utils.constants.DBConstants
-
-import io.reactivex.Flowable
 import io.reactivex.Single
 
 
@@ -24,7 +21,7 @@ interface MovieDao {
     fun insert(movie: Movie)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(movie: List<Movie>)
+    fun insert(movies: List<Movie>)
 
     @Query("DELETE FROM " + DBConstants.MOVIES_TABLE_NAME)
     fun deleteAll()
