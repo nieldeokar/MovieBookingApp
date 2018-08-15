@@ -49,7 +49,7 @@ class PaymentActivity : BaseActivity<PaymentView, PaymentPresenter>(), PaymentVi
 
             seatNumber = intent.getStringExtra(BUNDLE_EXTRA_SEAT_NO)
             val showTimesId = intent.getIntExtra(BUNDLE_EXTRA_SHOW_TIME_ID,0)
-            Log.d("Xais","seatNumberIs $seatNumber showId $showTimesId")
+            Log.d("TTApp","seatNumberIs $seatNumber showId $showTimesId")
 
             presenter.getShowTimeData(showTimesId)
 

@@ -13,7 +13,7 @@ class SeatSelectionPresenter @Inject constructor(private val seatSelectionIntera
                 view.renderSeats(data)
                 view.hideLoading()
             }, { error ->
-                Log.d("Xais", error.localizedMessage)
+                Log.d("TTApp", error.localizedMessage)
                 view.hideLoading()
             })
 

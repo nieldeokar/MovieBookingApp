@@ -13,7 +13,7 @@ class MainPresenter @Inject constructor(private val mainInteractor: MainInteract
                 view.populateMovies(data)
                 view.hideLoading()
             }, { error ->
-                Log.d("Xais", error.localizedMessage)
+                Log.d("TTApp", error.localizedMessage)
                 view.hideLoading()
             })
         }

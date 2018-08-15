@@ -31,8 +31,8 @@ class PaymentApiRepository @Inject constructor() {
 
                 for (layout in showTimes.theaterLayout.getTheaterLayouts()!!){
 
-                    Log.d("Xais",layout.rowName)
-                    Log.d("Xais",layout.values.toString())
+                    Log.d("TTApp",layout.rowName)
+                    Log.d("TTApp",layout.values.toString())
                 }
 
                 val ordersDaoObj = AppDatabase.getInstance(context).ordersDao()

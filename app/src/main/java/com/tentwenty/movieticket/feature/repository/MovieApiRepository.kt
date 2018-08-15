@@ -81,12 +81,12 @@ class MovieApiRepository @Inject constructor() {
                 }
                 val showTimeDao = AppDatabase.getInstance(context).showTimesDao()
 
-                Log.d("Xais", "inserted ${showTimeList.size} items")
+                Log.d("TTApp", "inserted ${showTimeList.size} items")
                 showTimeDao.insert(showTimeList)
             }
 
         }, { error ->
-            Log.d("Xais", error.localizedMessage)
+            Log.d("TTApp", error.localizedMessage)
 
         })
 

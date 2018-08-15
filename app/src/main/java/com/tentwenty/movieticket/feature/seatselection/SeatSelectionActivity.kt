@@ -60,7 +60,7 @@ class SeatSelectionActivity : BaseActivity<SeatSelectionView, SeatSelectionPrese
             tableLayout.isStretchAllColumns = true
 
             showId = intent.getIntExtra(BUNDLE_EXTRA_SHOW_TIME_ID, 0)
-            Log.d("Xais", "showTimesId : $showId")
+            Log.d("TTApp", "showTimesId : $showId")
             presenter.getData(showId)
 
         } else {
@@ -84,8 +84,8 @@ class SeatSelectionActivity : BaseActivity<SeatSelectionView, SeatSelectionPrese
         mTheaterLayoutList.forEachIndexed { i, rowLayout ->
 
 
-            Log.d("Xais", rowLayout.rowName)
-            Log.d("Xais", rowLayout.values.toString())
+            Log.d("TTApp", rowLayout.rowName)
+            Log.d("TTApp", rowLayout.values.toString())
 
             val tableRow = TableRow(this)
 
@@ -113,7 +113,7 @@ class SeatSelectionActivity : BaseActivity<SeatSelectionView, SeatSelectionPrese
                     SEAT_BOOKED -> {
                         tvCell.text = (j + 1).toString()
                         tvCell.isClickable = false
-                        Log.d("Xais", "Found booked")
+                        Log.d("TTApp", "Found booked")
                     }
                     EMPTY_SEAT_PASSAGE -> {
                         // No action needed

@@ -23,7 +23,7 @@ class PaymentPresenter @Inject constructor(private val paymentInteractor: Paymen
             paymentInteractor.getShowTime(showId).subscribe({ data ->
                 showTimeEntity = data
             }, { error ->
-                Log.d("Xais", error.localizedMessage)
+                Log.d("TTApp", error.localizedMessage)
                 view.showToast(error.localizedMessage)
             })
 
@@ -42,7 +42,7 @@ class PaymentPresenter @Inject constructor(private val paymentInteractor: Paymen
                 saveBookingIntoDatabase(view, readableSeatNo, cardInfo)
 
             } else {
-                Log.d("Xais", "ShowTimeEntity not initialized")
+                Log.d("TTApp", "ShowTimeEntity not initialized")
                 view.hideLoading()
                 view.showToast(R.string.invalid_showtime)
             }
@@ -58,7 +58,7 @@ class PaymentPresenter @Inject constructor(private val paymentInteractor: Paymen
 
                 view.showOrderDetails(data)
             }, { error ->
-                Log.d("Xais", error.localizedMessage)
+                Log.d("TTApp", error.localizedMessage)
                 view.showToast(error.localizedMessage)
             })
 
@@ -79,7 +79,7 @@ class PaymentPresenter @Inject constructor(private val paymentInteractor: Paymen
             view.redirectToBookingConfirmation(data)
             view.hideLoading()
         }, { error ->
-            Log.d("Xais", error.localizedMessage)
+            Log.d("TTApp", error.localizedMessage)
             view.hideLoading()
         })
     }
@@ -98,7 +98,7 @@ class PaymentPresenter @Inject constructor(private val paymentInteractor: Paymen
 
         list[rowPosition].values = positionValues
 
-        Log.d("Xais", "postitionValue $positionValues ")
+        Log.d("TTApp", "postitionValue $positionValues ")
 
         return list[rowPosition].rowName + (columnPosition + 1)
 

@@ -13,7 +13,7 @@ class ShowTimesPresenter  @Inject constructor(private val showTimesInteractor: S
                 view.renderShowTimes(data)
                 view.hideLoading()
             }, { error ->
-                Log.d("Xais", error.localizedMessage)
+                Log.d("TTApp", error.localizedMessage)
                 view.hideLoading()
             })
 
@@ -28,7 +28,7 @@ class ShowTimesPresenter  @Inject constructor(private val showTimesInteractor: S
                 view.renderShowTimes(data)
                 view.hideLoading()
             }, { error ->
-                Log.d("Xais", error.localizedMessage)
+                Log.d("TTApp", error.localizedMessage)
                 view.hideLoading()
             })
 
