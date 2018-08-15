@@ -10,8 +10,4 @@ public class MovieResponse {
   public List<Movie> getMovies() {
     return movies;
   }
-
-  public void setQuestions(List<Movie> questions) {
-    this.movies = questions;
-  }
 }
