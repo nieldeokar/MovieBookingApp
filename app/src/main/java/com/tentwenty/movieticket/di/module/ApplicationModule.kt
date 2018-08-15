@@ -27,40 +27,4 @@ class ApplicationModule(private val context: Context) {
     @Provides
     fun provideShowTimesAdapter(): ShowTimesAdapter = ShowTimesAdapter()
 
-
-    /*
-       companion object {
-        const val DATABASE = "database_name"
-    }
-
-
-     @Provides
-     @Named(DATABASE)
-     fun provideDatabaseName(): String {
-         return DBConstants.DB_NAME
-     }
-
-     @Provides
-     @Singleton
-     internal fun provideAppDatabase(context: Context, @Named(DATABASE) databaseName: String): AppDatabase {
-         return Room.databaseBuilder(context, AppDatabase::class.java, databaseName)
-                 .addCallback(object : RoomDatabase.Callback() {
-                     override fun onCreate(db: SupportSQLiteDatabase) {
-                         super.onCreate(db)
-                         Executors.newSingleThreadScheduledExecutor().execute(
-                                 Runnable { databaseName(context).dataDao().insertAll(DataEntity.populateData()) })
-                     }
-                 })
-
-                 .build()
-     }
-
-      @Provides
-     @Singleton
-     internal fun provideMovieDao(appDatabase: AppDatabase): MovieDao {
-         return appDatabase.moviesDao()
-     }
- */
-
-
 }
