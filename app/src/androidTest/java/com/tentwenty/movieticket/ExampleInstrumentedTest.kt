@@ -2,18 +2,12 @@ package com.tentwenty.movieticket
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4
-import android.util.Log
 import com.google.gson.GsonBuilder
-import com.google.gson.reflect.TypeToken
 import com.tentwenty.movieticket.feature.shared.model.TheaterLayout
-import org.hamcrest.CoreMatchers.instanceOf
-
+import com.tentwenty.movieticket.utils.util.AESEncyption
+import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
-
-import org.junit.Assert.*
-import com.google.gson.Gson
-
 
 
 /**
@@ -55,7 +49,6 @@ class ExampleInstrumentedTest {
     @Test
     fun testGsonDeserializer() {
 
-
         val gson = GsonBuilder().create()
 
         val theaterRows = gson.fromJson(JSON_STRING, Array<TheaterLayout>::class.java)
@@ -64,6 +57,17 @@ class ExampleInstrumentedTest {
             print("Row details: " + it.rowName +" +"+it.values[0])
         }
 
+    }
+
+
+    @Test
+    fun test_AESEncryption() {
+        val originalData = "ORIGIANALA"
+        val seed = "thisIs EED"
+
+        var encrypted = AESEncyption.encrypt(originalData,seed)
+
+        assertEquals(originalData, AESEncyption.decrypt(encrypted,seed))
 
     }
 }

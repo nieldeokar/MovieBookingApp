@@ -25,9 +25,14 @@
         </activity>
         <activity
             android:name=".feature.seatselection.SeatSelectionActivity"
-            android:theme="@style/AppTheme.NoActionbar"/>
-        <activity android:name=".feature.showtimes.ShowTimesActivity"
-            android:theme="@style/AppTheme.NoActionbar"/>
+            android:theme="@style/AppTheme.NoActionbar" />
+        <activity
+            android:name=".feature.showtimes.ShowTimesActivity"
+            android:theme="@style/AppTheme.NoActionbar" />
+        <activity android:name=".feature.payment.PaymentActivity"
+            android:theme="@style/AppTheme.NoActionbar">
+
+        </activity>
     </application>
 
 </manifest>

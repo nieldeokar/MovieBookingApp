@@ -7,12 +7,13 @@ import android.arch.persistence.room.RoomDatabase
 import android.content.Context
 import com.tentwenty.movieticket.feature.shared.model.CinemaEntity
 import com.tentwenty.movieticket.feature.shared.model.Movie
+import com.tentwenty.movieticket.feature.shared.model.OrdersEntity
 import com.tentwenty.movieticket.feature.shared.model.ShowTimeEntity
 import com.tentwenty.movieticket.utils.constants.DBConstants
 import java.util.concurrent.Executors
 
 
-@Database(entities = [Movie::class, CinemaEntity::class, ShowTimeEntity::class], version = 1, exportSchema = false)
+@Database(entities = [Movie::class, CinemaEntity::class, ShowTimeEntity::class, OrdersEntity::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun moviesDao(): MovieDao
@@ -20,6 +21,8 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun cinemasDao(): CinemaDao
 
     abstract fun showTimesDao(): ShowTimeDao
+
+    abstract fun ordersDao(): OrdersDao
 
 
     companion object {

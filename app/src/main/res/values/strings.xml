@@ -9,4 +9,14 @@
 
     <string name="book_text">Book <b>%s</b></string>
     <string name="no_show_times_available">No show times available</string>
+    <string name="card_number">Card number</string>
+    <string name="card_name">Card Name</string>
+    <string name="submit">Submit</string>
+    <string name="valid_till">Valid till</string>
+    <string name="valid_from">Valid from</string>
+    <string name="card_cvv">CVV</string>
+    <string name="invalid_seat">Invalid Seat number please reselect seat</string>
+    <string name="error_validate_input_payment">Please enter all the details</string>
+    <string name="unknown_source">Unknown Source</string>
+    <string name="invalid_showtime">ShowTime not found please reselect showtime</string>
 </resources>

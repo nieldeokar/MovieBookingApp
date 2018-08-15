@@ -2,6 +2,7 @@ package com.tentwenty.movieticket.feature.seatselection
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.view.MenuItem
 import android.view.View
@@ -12,6 +13,7 @@ import android.widget.Toast
 import com.tentwenty.movieticket.R
 import com.tentwenty.movieticket.TenTwentyApp
 import com.tentwenty.movieticket.feature.base.BaseActivity
+import com.tentwenty.movieticket.feature.payment.PaymentActivity
 import com.tentwenty.movieticket.feature.shared.model.ShowTimeEntity
 import com.tentwenty.movieticket.feature.shared.model.TheaterLayout
 import kotlinx.android.synthetic.main.activity_seat_selection.*
@@ -27,12 +29,17 @@ class SeatSelectionActivity : BaseActivity<SeatSelectionView, SeatSelectionPrese
         const val SEAT_AVAILABLE = 1
         const val SEAT_UNAVAILABLE = 2
         const val SEAT_SELECTED = 3
+        const val SEAT_BOOKED = 4
     }
 
     @Inject
     lateinit var seatselectionPresenter: SeatSelectionPresenter
 
     private lateinit var mTheaterLayoutList: Array<TheaterLayout>
+
+    private lateinit var seatNumber: String
+
+    private var showId = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         (application as TenTwentyApp).getApplicationComponent().inject(this)
@@ -48,14 +55,16 @@ class SeatSelectionActivity : BaseActivity<SeatSelectionView, SeatSelectionPrese
             mActionBar.setHomeButtonEnabled(true)
         }
 
-        if(intent.hasExtra(BUNDLE_EXTRA_SHOW_TIME_ID)){
+        if (intent.hasExtra(BUNDLE_EXTRA_SHOW_TIME_ID)) {
 
             tableLayout.isStretchAllColumns = true
 
+            showId = intent.getIntExtra(BUNDLE_EXTRA_SHOW_TIME_ID, 0)
+            Log.d("Xais", "showTimesId : $showId")
+            presenter.getData(showId)
 
-            presenter.getData(intent.getIntExtra(BUNDLE_EXTRA_SHOW_TIME_ID,0))
-        }else{
-            Toast.makeText(this,"Unknown Source",Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(this, "Unknown Source", Toast.LENGTH_SHORT).show()
         }
 
 
@@ -72,7 +81,11 @@ class SeatSelectionActivity : BaseActivity<SeatSelectionView, SeatSelectionPrese
         val tableRowParams = TableRow.LayoutParams()
         tableRowParams.setMargins(8, 8, 8, 8)
 
-        mTheaterLayoutList.forEachIndexed{ i, rowLayout ->
+        mTheaterLayoutList.forEachIndexed { i, rowLayout ->
+
+
+            Log.d("Xais", rowLayout.rowName)
+            Log.d("Xais", rowLayout.values.toString())
 
             val tableRow = TableRow(this)
 
@@ -97,6 +110,11 @@ class SeatSelectionActivity : BaseActivity<SeatSelectionView, SeatSelectionPrese
                         tvCell.text = (j + 1).toString()
                         tvCell.isClickable = false
                     }
+                    SEAT_BOOKED -> {
+                        tvCell.text = (j + 1).toString()
+                        tvCell.isClickable = false
+                        Log.d("Xais", "Found booked")
+                    }
                     EMPTY_SEAT_PASSAGE -> {
                         // No action needed
                     }
@@ -111,11 +129,11 @@ class SeatSelectionActivity : BaseActivity<SeatSelectionView, SeatSelectionPrese
 
     override fun onClick(view: View?) {
 
-        if(view?.id == R.id.btnBookTicket){
+        if (view?.id == R.id.btnBookTicket && ::seatNumber.isInitialized) {
 
             moveToPaymentActivity()
 
-        }else if (::mTheaterLayoutList.isInitialized) {
+        } else if (::mTheaterLayoutList.isInitialized) {
 
             val positionArray = (view!!.tag as String).split(",")
 
@@ -128,17 +146,19 @@ class SeatSelectionActivity : BaseActivity<SeatSelectionView, SeatSelectionPrese
                 (view as SquareTextView).setTextType(SEAT_SELECTED)
             }
 
-            val txt = mTheaterLayoutList[rowPosition].rowName + (columnPosition+1)
+            val txt = mTheaterLayoutList[rowPosition].rowName + (columnPosition + 1)
             btnBookTicket.visibility = View.VISIBLE
-            btnBookTicket.text = getString(R.string.book_text,txt)
+            btnBookTicket.text = getString(R.string.book_text, txt)
+
+            seatNumber = (view.tag as String)
         }
 
     }
 
     private fun moveToPaymentActivity() {
-        // TODO CHANGE
-        val intent = Intent(this, SeatSelectionActivity::class.java)
-//        intent.putExtra(SeatSelectionActivity.BUNDLE_EXTRA_SHOW_TIME_ID,mMovie)
+        val intent = Intent(this, PaymentActivity::class.java)
+        intent.putExtra(PaymentActivity.BUNDLE_EXTRA_SHOW_TIME_ID, showId)
+        intent.putExtra(PaymentActivity.BUNDLE_EXTRA_SEAT_NO, seatNumber)
         startActivity(intent)
     }
 

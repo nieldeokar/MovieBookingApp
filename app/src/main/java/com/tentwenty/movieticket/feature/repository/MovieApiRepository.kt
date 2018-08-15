@@ -60,8 +60,6 @@ class MovieApiRepository @Inject constructor() {
 
     private fun insertShowTimeData(moviesList: List<Movie>) {
 
-
-
         getCinemaData().subscribe({ data ->
 
             if(data.isNotEmpty() && moviesList.isNotEmpty()) {

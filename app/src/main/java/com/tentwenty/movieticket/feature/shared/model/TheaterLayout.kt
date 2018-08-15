@@ -4,5 +4,5 @@ import com.google.gson.annotations.SerializedName
 
 data class TheaterLayout(
         @SerializedName("row") val rowName: String = "",
-        @SerializedName("values") val values: List<Int>
+        @SerializedName("values") var values: List<Int>
 )

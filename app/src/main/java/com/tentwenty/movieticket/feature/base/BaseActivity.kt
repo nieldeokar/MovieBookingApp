@@ -1,6 +1,7 @@
 package com.tentwenty.movieticket.feature.base
 
 import android.os.Bundle
+import android.widget.Toast
 import com.hannesdorfmann.mosby3.mvp.MvpActivity
 import com.hannesdorfmann.mosby3.mvp.MvpPresenter
 import com.hannesdorfmann.mosby3.mvp.MvpView
@@ -31,5 +32,13 @@ abstract class BaseActivity<V : MvpView, P : MvpPresenter<V>> : MvpActivity<V, P
             dialogHelper?.destroy()
         }
         super.onDestroy()
+    }
+
+    override fun showToast(strMsg: String) {
+        Toast.makeText(this,strMsg,Toast.LENGTH_LONG).show()
+    }
+
+    override fun showToast(msgId: Int) {
+        Toast.makeText(this,getString(msgId),Toast.LENGTH_LONG).show()
     }
 }

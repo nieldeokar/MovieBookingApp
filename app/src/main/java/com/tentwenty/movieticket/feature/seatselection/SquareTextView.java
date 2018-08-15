@@ -6,7 +6,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import android.view.Gravity;
-import android.view.MotionEvent;
 
 import com.tentwenty.movieticket.R;
 
@@ -63,6 +62,10 @@ public class SquareTextView extends AppCompatTextView {
             case SeatSelectionActivity.SEAT_SELECTED:
                 setTextColor(ContextCompat.getColor(getContext(),  android.R.color.white));
                 setBackgroundColor(ContextCompat.getColor(getContext(),android.R.color.holo_green_dark));
+                break;
+            case SeatSelectionActivity.SEAT_BOOKED:
+                setTextColor(ContextCompat.getColor(getContext(),  android.R.color.white));
+                setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.text_bg_booked));
                 break;
         }
     }

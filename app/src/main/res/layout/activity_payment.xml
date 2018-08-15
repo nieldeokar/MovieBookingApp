@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".feature.payment.PaymentActivity">
+
+    <include
+        layout="@layout/toolbar"/>
+
+    <EditText
+        android:id="@+id/cardNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/padding_8dp"
+        android:ems="10"
+        android:hint="@string/card_number"
+        android:inputType="number"
+        android:maxLength="30"
+        android:padding="@dimen/padding_4dp" />
+
+    <EditText
+        android:id="@+id/etCardName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/padding_8dp"
+        android:ems="10"
+        android:hint="@string/card_name"
+        android:inputType="textPersonName"
+        android:maxLength="20"
+        android:padding="@dimen/padding_4dp" />
+
+    <EditText
+        android:id="@+id/etCardValidFrom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/padding_8dp"
+        android:ems="10"
+        android:hint="@string/valid_from"
+        android:inputType="text"
+        android:maxLength="10"
+        android:padding="@dimen/padding_4dp" />
+
+    <EditText
+        android:id="@+id/etCardValidTill"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/padding_8dp"
+        android:ems="10"
+        android:hint="@string/valid_till"
+        android:inputType="text"
+        android:maxLength="10"
+        android:padding="@dimen/padding_4dp" />
+
+    <EditText
+        android:id="@+id/etCvv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/padding_8dp"
+        android:ems="10"
+        android:hint="@string/card_cvv"
+        android:inputType="number"
+        android:maxLength="3"
+        android:padding="@dimen/padding_4dp" />
+
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/padding_8dp"
+        android:hint="@string/submit"
+        android:enabled="false"
+        android:onClick="submitClicked"
+        android:padding="@dimen/padding_4dp" />
+
+
+</LinearLayout>

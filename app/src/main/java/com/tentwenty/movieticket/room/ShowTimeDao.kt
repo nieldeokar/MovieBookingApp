@@ -1,9 +1,6 @@
 package com.tentwenty.movieticket.room
 
-import android.arch.persistence.room.Dao
-import android.arch.persistence.room.Insert
-import android.arch.persistence.room.OnConflictStrategy
-import android.arch.persistence.room.Query
+import android.arch.persistence.room.*
 import com.tentwenty.movieticket.feature.shared.model.ShowTimeEntity
 import com.tentwenty.movieticket.feature.showtimes.MovieShowTimes
 import com.tentwenty.movieticket.utils.constants.DBConstants
@@ -20,6 +17,9 @@ interface ShowTimeDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(showtime: ShowTimeEntity)
+
+    @Update()
+    fun update(showtime: ShowTimeEntity)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(showtimes: List<ShowTimeEntity>)
