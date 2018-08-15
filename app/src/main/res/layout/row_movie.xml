@@ -69,7 +69,8 @@
       android:layout_alignParentEnd="true"
       android:layout_alignParentRight="true"
       android:layout_centerVertical="true"
-      android:text="Book"
+      android:text="@string/book"
+      android:background="@drawable/text_bg"
       android:focusable="false"
       android:gravity="center" />
 

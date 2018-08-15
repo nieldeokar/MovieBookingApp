@@ -48,8 +48,8 @@ class MovieApiRepository @Inject constructor() {
                 try {
                     val moviesDao = AppDatabase.getInstance(context).moviesDao()
                     moviesDao.insert(dataList)
-//                    checkShowTimeData(dataList)
-                    insertShowTimeData(dataList)
+                    insertShowTimesData(dataList)
+
                     Log.d("MovieApiRepository", "SuccessInsert")
                     e.onSuccess("Successful")
                 } catch (exception: IllegalStateException) {
@@ -58,7 +58,7 @@ class MovieApiRepository @Inject constructor() {
                 }
             }
 
-    private fun insertShowTimeData(moviesList: List<Movie>) {
+    private fun insertShowTimesData(moviesList: List<Movie>) {
 
         getCinemaData().subscribe({ data ->
 
@@ -73,8 +73,7 @@ class MovieApiRepository @Inject constructor() {
                         val movie = moviesList[randomMovieIndex]
 
                         val showTimeEntity = ShowTimeEntity(0, cinemaEntity.cinema_location, movie.id,
-                                cinemaEntity.id, "2:25,10:55", cinemaEntity.theaterLayout)
-
+                                cinemaEntity.id, "2:25 PM", cinemaEntity.theaterLayout)
 
                         showTimeList.add(showTimeEntity)
                     }
