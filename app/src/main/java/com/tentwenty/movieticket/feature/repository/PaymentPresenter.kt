@@ -37,9 +37,9 @@ class PaymentPresenter @Inject constructor(private val paymentInteractor: Paymen
 
             if (::showTimeEntity.isInitialized) {
 
-                updateSeatStatusToBooked(seatNumber)
+                val readableSeatNo = updateSeatStatusToBooked(seatNumber)
 
-                saveBookingIntoDatabase(view, seatNumber, cardInfo)
+                saveBookingIntoDatabase(view, readableSeatNo, cardInfo)
 
             } else {
                 Log.d("Xais", "ShowTimeEntity not initialized")
@@ -48,6 +48,26 @@ class PaymentPresenter @Inject constructor(private val paymentInteractor: Paymen
             }
 
         }
+    }
+
+    fun getOrderData(orderId: Long) {
+        ifViewAttached { view ->
+            view.showLoading()
+
+            paymentInteractor.getOrderDetails(orderId).subscribe({ data ->
+
+                view.showOrderDetails(data)
+            }, { error ->
+                Log.d("Xais", error.localizedMessage)
+                view.showToast(error.localizedMessage)
+            })
+
+            view.hideLoading()
+        }
+    }
+
+    fun getDecryptedCardDetails(ordersEntity: OrdersEntity) : String{
+        return AESEncyption.decrypt(ordersEntity.cardDetails,ordersEntity.seatNumber)
     }
 
     private fun saveBookingIntoDatabase(view: PaymentView, seatNumber: String, cardInfo: CardInfo) {
@@ -65,10 +85,10 @@ class PaymentPresenter @Inject constructor(private val paymentInteractor: Paymen
     }
 
 
-    private fun updateSeatStatusToBooked(seatNumber: String) {
+    private fun updateSeatStatusToBooked(seatNo: String) : String {
         val list = showTimeEntity.theaterLayout.getTheaterLayouts()!!
 
-        val positionArray = seatNumber.split(",")
+        val positionArray = seatNo.split(",")
 
         val rowPosition = positionArray[0].toInt()
         val columnPosition = positionArray[1].toInt()
@@ -76,10 +96,12 @@ class PaymentPresenter @Inject constructor(private val paymentInteractor: Paymen
         val positionValues = list[rowPosition].values.toMutableList()
         positionValues[columnPosition] = SeatSelectionActivity.SEAT_BOOKED
 
-
         list[rowPosition].values = positionValues
 
         Log.d("Xais", "postitionValue $positionValues ")
+
+        return list[rowPosition].rowName + (columnPosition + 1)
+
 
     }
 

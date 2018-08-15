@@ -9,5 +9,7 @@ class PaymentInteractor @Inject constructor(private val paymentApiRepository: Pa
 
     fun getShowTime(showTimeId : Int) = paymentApiRepository.getData(showTimeId)
 
+    fun getOrderDetails(orderId : Long) = paymentApiRepository.getOrderDetails(orderId)
+
     fun confirmBooking(showTimeEntity: ShowTimeEntity,ordersEntity: OrdersEntity) = paymentApiRepository.saveData(showTimeEntity,ordersEntity)
 }

@@ -15,7 +15,7 @@ interface OrdersDao {
     fun getAllOrders() : Single<List<OrdersEntity>>
 
     @Query("SELECT * FROM " + DBConstants.ORDERS_TABLE_NAME + " WHERE o_id == :id")
-    fun getOrderById(id: Int): Single<OrdersEntity>
+    fun getOrderById(id: Long): Single<OrdersEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(order: OrdersEntity) : Long

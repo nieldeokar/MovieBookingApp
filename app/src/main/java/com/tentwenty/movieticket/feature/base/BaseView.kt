@@ -11,4 +11,6 @@ interface BaseView: MvpView {
     fun showToast(strMsg :String)
 
     fun showToast(msgId : Int)
+
+    fun hideKeyBoard()
 }

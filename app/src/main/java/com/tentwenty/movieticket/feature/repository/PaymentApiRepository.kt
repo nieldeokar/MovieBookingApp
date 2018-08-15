@@ -18,6 +18,8 @@ class PaymentApiRepository @Inject constructor() {
 
     fun getData(showId: Int): Single<ShowTimeEntity> = getDataFromDb(showId)
 
+    fun getOrderDetails(orderId: Long): Single<OrdersEntity> = getOrderDataFromDb(orderId)
+
     fun saveData(showTimes: ShowTimeEntity, ordersEntity: OrdersEntity): Single<Long> = saveDataIntoDb(showTimes, ordersEntity)
 
     private fun saveDataIntoDb(showTimes: ShowTimeEntity, ordersEntity: OrdersEntity): Single<Long> =
@@ -63,7 +65,7 @@ class PaymentApiRepository @Inject constructor() {
             }
 
 
-    private fun getOrderDataFromDb(orderId: Int): Single<OrdersEntity> =
+    private fun getOrderDataFromDb(orderId: Long): Single<OrdersEntity> =
             Single.create { e ->
                 val ordersDao = AppDatabase.getInstance(context).ordersDao()
 

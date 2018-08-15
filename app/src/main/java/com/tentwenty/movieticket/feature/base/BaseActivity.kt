@@ -1,6 +1,8 @@
 package com.tentwenty.movieticket.feature.base
 
+import android.content.Context
 import android.os.Bundle
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import com.hannesdorfmann.mosby3.mvp.MvpActivity
 import com.hannesdorfmann.mosby3.mvp.MvpPresenter
@@ -40,5 +42,13 @@ abstract class BaseActivity<V : MvpView, P : MvpPresenter<V>> : MvpActivity<V, P
 
     override fun showToast(msgId: Int) {
         Toast.makeText(this,getString(msgId),Toast.LENGTH_LONG).show()
+    }
+
+    override fun hideKeyBoard() {
+        val view = this.currentFocus
+        if (view != null) {
+            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(view.windowToken, 0)
+        }
     }
 }

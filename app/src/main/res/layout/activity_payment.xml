@@ -74,5 +74,19 @@
         android:onClick="submitClicked"
         android:padding="@dimen/padding_4dp" />
 
+    <TextView
+        android:id="@+id/tvEncryptedDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/padding_8dp"
+        />
+
+    <TextView
+        android:id="@+id/tvDecryptedDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/padding_8dp"
+        />
+
 
 </LinearLayout>
