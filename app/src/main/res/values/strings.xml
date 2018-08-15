@@ -8,4 +8,5 @@
 
 
     <string name="book_text">Book <b>%s</b></string>
+    <string name="no_show_times_available">No show times available</string>
 </resources>

@@ -2,6 +2,7 @@ package com.tentwenty.movieticket.di.module
 
 import android.content.Context
 import com.tentwenty.movieticket.feature.main.MainAdapter
+import com.tentwenty.movieticket.feature.showtimes.ShowTimesAdapter
 import com.tentwenty.movieticket.network.ApiService
 import com.tentwenty.movieticket.network.RetrofitHelper
 import dagger.Module
@@ -23,6 +24,9 @@ class ApplicationModule(private val context: Context) {
 
     @Provides
     fun provideMainAdapter(): MainAdapter = MainAdapter()
+
+    @Provides
+    fun provideShowTimesAdapter(): ShowTimesAdapter = ShowTimesAdapter()
 
 
     /*

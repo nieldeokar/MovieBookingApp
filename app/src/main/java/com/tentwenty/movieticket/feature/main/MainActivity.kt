@@ -9,8 +9,8 @@ import com.tentwenty.movieticket.R
 import com.tentwenty.movieticket.TenTwentyApp
 import com.tentwenty.movieticket.feature.base.BaseActivity
 import com.tentwenty.movieticket.feature.main.DividerItemDecoration.VERTICAL_LIST
-import com.tentwenty.movieticket.feature.seatselection.SeatSelectionActivity
 import com.tentwenty.movieticket.feature.shared.model.Movie
+import com.tentwenty.movieticket.feature.showtimes.ShowTimesActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
@@ -43,8 +43,8 @@ class MainActivity : BaseActivity<MainView, MainPresenter>(), MainView, MainAdap
     }
 
     override fun onItemClick(position: Int, v: View?) {
-        val intent = Intent(this, SeatSelectionActivity::class.java)
-        intent.putExtra(SeatSelectionActivity.BUNDLE_EXTRA_MODEL,mainAdapter.getItem(position))
+        val intent = Intent(this, ShowTimesActivity::class.java)
+        intent.putExtra(ShowTimesActivity.BUNDLE_EXTRA_MOVIE_OBJECT,mainAdapter.getItem(position))
         startActivity(intent)
     }
 

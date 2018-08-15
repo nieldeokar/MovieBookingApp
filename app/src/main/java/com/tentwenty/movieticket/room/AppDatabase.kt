@@ -12,7 +12,7 @@ import com.tentwenty.movieticket.utils.constants.DBConstants
 import java.util.concurrent.Executors
 
 
-@Database(entities = [Movie::class, CinemaEntity::class, ShowTimeEntity::class], version = 1)
+@Database(entities = [Movie::class, CinemaEntity::class, ShowTimeEntity::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun moviesDao(): MovieDao

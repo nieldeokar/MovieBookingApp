@@ -13,7 +13,6 @@ import com.tentwenty.movieticket.R
 import com.tentwenty.movieticket.TenTwentyApp
 import com.tentwenty.movieticket.feature.base.BaseActivity
 import com.tentwenty.movieticket.feature.shared.model.CinemaEntity
-import com.tentwenty.movieticket.feature.shared.model.Movie
 import com.tentwenty.movieticket.feature.shared.model.TheaterLayout
 import kotlinx.android.synthetic.main.activity_seat_selection.*
 import kotlinx.android.synthetic.main.toolbar.*
@@ -23,7 +22,7 @@ import javax.inject.Inject
 class SeatSelectionActivity : BaseActivity<SeatSelectionView, SeatSelectionPresenter>(), SeatSelectionView, View.OnClickListener {
 
     companion object {
-        const val BUNDLE_EXTRA_MODEL = "movies_obj"
+        const val BUNDLE_EXTRA_SHOW_TIME_ID = "show_time_id"
         const val EMPTY_SEAT_PASSAGE = 0
         const val SEAT_AVAILABLE = 1
         const val SEAT_UNAVAILABLE = 2
@@ -34,8 +33,6 @@ class SeatSelectionActivity : BaseActivity<SeatSelectionView, SeatSelectionPrese
     lateinit var seatselectionPresenter: SeatSelectionPresenter
 
     private lateinit var mTheaterLayoutList: Array<TheaterLayout>
-
-    private lateinit var mMovie : Movie
 
     override fun onCreate(savedInstanceState: Bundle?) {
         (application as TenTwentyApp).getApplicationComponent().inject(this)
@@ -51,11 +48,10 @@ class SeatSelectionActivity : BaseActivity<SeatSelectionView, SeatSelectionPrese
             mActionBar.setHomeButtonEnabled(true)
         }
 
-        if(intent.hasExtra(BUNDLE_EXTRA_MODEL)){
+        if(intent.hasExtra(BUNDLE_EXTRA_SHOW_TIME_ID)){
 
-            mMovie = intent.getParcelableExtra(BUNDLE_EXTRA_MODEL)
             tableLayout.isStretchAllColumns = true
-            mActionBar?.title = mMovie.title
+
 
             presenter.getData()
         }else{
@@ -142,7 +138,7 @@ class SeatSelectionActivity : BaseActivity<SeatSelectionView, SeatSelectionPrese
     private fun moveToPaymentActivity() {
         // TODO CHANGE
         val intent = Intent(this, SeatSelectionActivity::class.java)
-        intent.putExtra(SeatSelectionActivity.BUNDLE_EXTRA_MODEL,mMovie)
+//        intent.putExtra(SeatSelectionActivity.BUNDLE_EXTRA_SHOW_TIME_ID,mMovie)
         startActivity(intent)
     }
 

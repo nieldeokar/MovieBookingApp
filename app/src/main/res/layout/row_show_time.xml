@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/padding_8dp"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/cinemaName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/movieListRowTitle"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/cinemaLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_4dp"
+        android:textColor="@color/movieListRowSub" />
+
+    <TextView
+        android:id="@+id/timing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_4dp"
+        android:textColor="@color/movieListRowSub" />
+
+
+</LinearLayout>

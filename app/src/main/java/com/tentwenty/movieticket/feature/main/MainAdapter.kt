@@ -8,23 +8,22 @@ import com.squareup.picasso.Picasso
 import com.tentwenty.movieticket.R
 import com.tentwenty.movieticket.feature.shared.model.Movie
 import com.tentwenty.movieticket.utils.constants.ApiConstants
-import kotlinx.android.synthetic.main.item_movie.view.*
-import com.tentwenty.movieticket.feature.main.MainAdapter.ClickListener
 import com.tentwenty.movieticket.utils.util.Utils
+import kotlinx.android.synthetic.main.row_movie.view.*
 import java.security.InvalidParameterException
 
 
 class MainAdapter : RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
 
-    private val myList: MutableList<Movie> = ArrayList()
+    private val dataList: MutableList<Movie> = ArrayList()
 
     var clickListener: MainAdapter.ClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-            MainViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_movie, parent, false))
+            MainViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.row_movie, parent, false))
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
-        val data = myList[position]
+        val data = dataList[position]
 
         holder.titleText?.text = data.title
         holder.releaseDate?.text = Utils.convertDate(data.releaseDate)
@@ -35,19 +34,19 @@ class MainAdapter : RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
                 .into(holder.posterPath)
     }
 
-    override fun getItemCount() = myList.count()
+    override fun getItemCount() = dataList.count()
 
     fun setData(myList: List<Movie>) {
-        this.myList.clear()
-        this.myList.addAll(myList)
+        this.dataList.clear()
+        this.dataList.addAll(myList)
         notifyDataSetChanged()
     }
 
     fun getItem(position: Int): Movie {
-        if (position < 0 || position >= myList.size) {
+        if (position < 0 || position >= dataList.size) {
             throw InvalidParameterException("Invalid item index")
         }
-        return myList[position]
+        return dataList[position]
     }
 
     inner class MainViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView), View.OnClickListener {

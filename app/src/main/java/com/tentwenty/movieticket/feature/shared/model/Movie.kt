@@ -12,7 +12,7 @@ import com.tentwenty.movieticket.utils.constants.DBConstants
 class Movie() : Parcelable {
 
     @PrimaryKey
-    @ColumnInfo(name = "id")
+    @ColumnInfo(name = "m_id")
     @SerializedName("id")
     var id: Int = 0
 

@@ -15,7 +15,7 @@ interface CinemaDao {
     @Query("SELECT * FROM " + DBConstants.CINEMA_TABLE_NAME)
     fun getAllCinemas() : Single<List<CinemaEntity>>
 
-    @Query("SELECT * FROM " + DBConstants.CINEMA_TABLE_NAME + " WHERE id == :id")
+    @Query("SELECT * FROM " + DBConstants.CINEMA_TABLE_NAME + " WHERE c_id == :id")
     fun getCinemaById(id: Int): Single<CinemaEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

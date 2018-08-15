@@ -14,7 +14,7 @@ interface MovieDao {
     @Query("SELECT * FROM " + DBConstants.MOVIES_TABLE_NAME)
     fun getAllMovies() : Single<List<Movie>>
 
-    @Query("SELECT * FROM " + DBConstants.MOVIES_TABLE_NAME + " WHERE id == :id")
+    @Query("SELECT * FROM " + DBConstants.MOVIES_TABLE_NAME + " WHERE m_id == :id")
     fun getMovieById(id: Int): Single<Movie>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

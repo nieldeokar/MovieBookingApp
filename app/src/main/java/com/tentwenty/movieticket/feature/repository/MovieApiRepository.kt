@@ -74,7 +74,7 @@ class MovieApiRepository @Inject constructor() {
                         val randomMovieIndex = (1 until moviesList.size).random()
                         val movie = moviesList[randomMovieIndex]
 
-                        val showTimeEntity = ShowTimeEntity(0, cinemaEntity.location, movie.id,
+                        val showTimeEntity = ShowTimeEntity(0, cinemaEntity.cinema_location, movie.id,
                                 cinemaEntity.id, "2:25,10:55", cinemaEntity.theaterLayout)
 
 

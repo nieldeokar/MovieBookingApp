@@ -17,14 +17,14 @@ import java.nio.charset.Charset
 @Entity(tableName = DBConstants.CINEMA_TABLE_NAME)
 class CinemaEntity(
         @PrimaryKey(autoGenerate = true)
-        @ColumnInfo(name = "id")
+        @ColumnInfo(name = "c_id")
         var id: Int = 0,
 
         @ColumnInfo(name = "cinema_name")
         val name: String = "",
 
-        @ColumnInfo(name = "location")
-        val location: String = "",
+        @ColumnInfo(name = "cinema_location")
+        val cinema_location: String = "",
 
         @ColumnInfo(name = "theaterLayout")
         val theaterLayout: TheaterLayoutWrapper
