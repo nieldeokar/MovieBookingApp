@@ -70,6 +70,8 @@
       android:layout_alignParentRight="true"
       android:layout_centerVertical="true"
       android:text="@string/book"
+      android:textSize="16sp"
+      android:textColor="@color/colorPrimaryDark"
       android:background="@drawable/text_bg"
       android:focusable="false"
       android:gravity="center" />
