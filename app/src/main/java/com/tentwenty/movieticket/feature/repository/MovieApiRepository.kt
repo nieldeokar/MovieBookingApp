@@ -67,7 +67,7 @@ class MovieApiRepository @Inject constructor() {
 
                 for (cinemaEntity in data) {
 
-                    for (i in 1..3) {
+                    for (i in 1..5) {
 
                         val randomMovieIndex = (1 until moviesList.size).random()
                         val movie = moviesList[randomMovieIndex]

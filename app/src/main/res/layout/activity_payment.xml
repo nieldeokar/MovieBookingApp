@@ -6,87 +6,98 @@
     android:orientation="vertical"
     tools:context=".feature.payment.PaymentActivity">
 
-    <include
-        layout="@layout/toolbar"/>
+    <include layout="@layout/toolbar" />
 
-    <EditText
-        android:id="@+id/cardNumber"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/padding_8dp"
-        android:ems="10"
-        android:hint="@string/card_number"
-        android:inputType="number"
-        android:maxLength="30"
-        android:padding="@dimen/padding_4dp" />
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/etCardName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/padding_8dp"
-        android:ems="10"
-        android:hint="@string/card_name"
-        android:inputType="textPersonName"
-        android:maxLength="20"
-        android:padding="@dimen/padding_4dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/etCardValidFrom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/padding_8dp"
-        android:ems="10"
-        android:hint="@string/valid_from"
-        android:inputType="text"
-        android:maxLength="10"
-        android:padding="@dimen/padding_4dp" />
+            <EditText
+                android:id="@+id/cardNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/padding_8dp"
+                android:ems="10"
+                android:hint="@string/card_number"
+                android:inputType="number"
+                android:maxLength="30"
+                android:padding="@dimen/padding_4dp" />
 
-    <EditText
-        android:id="@+id/etCardValidTill"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/padding_8dp"
-        android:ems="10"
-        android:hint="@string/valid_till"
-        android:inputType="text"
-        android:maxLength="10"
-        android:padding="@dimen/padding_4dp" />
+            <EditText
+                android:id="@+id/etCardName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/padding_8dp"
+                android:ems="10"
+                android:hint="@string/card_name"
+                android:inputType="textPersonName"
+                android:maxLength="20"
+                android:padding="@dimen/padding_4dp" />
 
-    <EditText
-        android:id="@+id/etCvv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/padding_8dp"
-        android:ems="10"
-        android:hint="@string/card_cvv"
-        android:inputType="number"
-        android:maxLength="3"
-        android:padding="@dimen/padding_4dp" />
+            <EditText
+                android:id="@+id/etCardValidFrom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/padding_8dp"
+                android:ems="10"
+                android:hint="@string/valid_from"
+                android:inputType="text"
+                android:maxLength="10"
+                android:padding="@dimen/padding_4dp" />
 
-    <Button
-        android:id="@+id/btnSubmit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/padding_8dp"
-        android:hint="@string/submit"
-        android:enabled="false"
-        android:onClick="submitClicked"
-        android:padding="@dimen/padding_4dp" />
+            <EditText
+                android:id="@+id/etCardValidTill"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/padding_8dp"
+                android:ems="10"
+                android:hint="@string/valid_till"
+                android:inputType="text"
+                android:maxLength="10"
+                android:padding="@dimen/padding_4dp" />
 
-    <TextView
-        android:id="@+id/tvEncryptedDetails"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/padding_8dp"
-        />
+            <EditText
+                android:id="@+id/etCvv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/padding_8dp"
+                android:ems="10"
+                android:hint="@string/card_cvv"
+                android:inputType="number"
+                android:maxLength="3"
+                android:padding="@dimen/padding_4dp" />
 
-    <TextView
-        android:id="@+id/tvDecryptedDetails"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/padding_8dp"
-        />
+            <Button
+                android:id="@+id/btnSubmit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/padding_8dp"
+                android:enabled="false"
+                android:hint="@string/submit"
+                android:onClick="submitClicked"
+                android:padding="@dimen/padding_4dp" />
 
+            <TextView
+                android:id="@+id/tvEncryptedDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/padding_8dp"
+                android:text="@string/encrypted_data"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tvDecryptedDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/padding_8dp"
+                android:text="@string/actual_data"
+                android:visibility="gone" />
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

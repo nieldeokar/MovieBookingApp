@@ -21,4 +21,6 @@
     <string name="invalid_showtime">ShowTime not found please reselect showtime</string>
     <string name="booking_success">Booked successfully</string>
     <string name="book">Book</string>
+    <string name="encrypted_data">Encrypted data :\n</string>
+    <string name="actual_data">Actual data :\n</string>
 </resources>

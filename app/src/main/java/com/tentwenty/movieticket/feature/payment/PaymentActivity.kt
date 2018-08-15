@@ -91,11 +91,15 @@ class PaymentActivity : BaseActivity<PaymentView, PaymentPresenter>(), PaymentVi
 
     override fun showOrderDetails(ordersEntity: OrdersEntity) {
 
-        tvEncryptedDetails.text = ordersEntity.toString()
+        tvEncryptedDetails.visibility = View.VISIBLE
+        tvDecryptedDetails.visibility = View.VISIBLE
+
+
+        tvEncryptedDetails.append(ordersEntity.toString())
 
         ordersEntity.cardDetails = presenter.getDecryptedCardDetails(ordersEntity)
 
-        tvDecryptedDetails.text = ordersEntity.toString()
+        tvDecryptedDetails.append(ordersEntity.toString())
     }
 
     override fun createPresenter() = paymentPresenter
