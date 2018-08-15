@@ -6,7 +6,7 @@ import java.util.*
 
 object Utils {
 
-    fun convertDate(inputString: String): String {
+    fun convertDate(inputString: String?): String? {
 
         val sdf = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault())
 
