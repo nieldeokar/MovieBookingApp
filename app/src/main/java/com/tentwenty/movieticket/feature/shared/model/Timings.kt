@@ -5,12 +5,11 @@ import android.arch.persistence.room.PrimaryKey
 
 
 
-data class Demo(val data: List<Data>)
+data class Timings(val data: List<Time>)
 
 @Entity()
-data class Data(
+data class Time(
         @PrimaryKey
         val id: Int,
-        val name: String,
-        val imageUrl: String
+        val time: String
 )

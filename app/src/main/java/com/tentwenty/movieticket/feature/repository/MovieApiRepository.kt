@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.Log
 import com.tentwenty.movieticket.feature.shared.model.Movie
 import com.tentwenty.movieticket.network.ApiService
-import com.tentwenty.movieticket.room.MovieDao
+import com.tentwenty.movieticket.room.AppDatabase
 import com.tentwenty.movieticket.utils.constants.ApiConstants
 import io.reactivex.Single
 import io.reactivex.SingleEmitter
@@ -20,15 +20,11 @@ class MovieApiRepository @Inject constructor() {
     @Inject
     lateinit var context: Context
 
-    @Inject
-    lateinit var moviesDao : MovieDao
-
-
     fun getData(): Single<List<Movie>> = getDataFromDb()
 
     private fun getDataFromDb(): Single<List<Movie>> =
             Single.create { e ->
-
+                val moviesDao = AppDatabase.getInstance(context).moviesDao()
                 moviesDao.getAllMovies()
                         .subscribeOn(Schedulers.newThread())
                         .observeOn(AndroidSchedulers.mainThread())
@@ -46,6 +42,7 @@ class MovieApiRepository @Inject constructor() {
     private fun insertToDatabase(dataList: List<Movie>) =
             Single.create<String> { e ->
                 try {
+                    val moviesDao = AppDatabase.getInstance(context).moviesDao()
                     moviesDao.insert(dataList)
                     Log.d("MovieApiRepository","SuccessInsert")
                     e.onSuccess("Successful")

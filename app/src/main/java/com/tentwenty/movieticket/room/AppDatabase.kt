@@ -1,12 +1,50 @@
 package com.tentwenty.movieticket.room
 
+import android.arch.persistence.db.SupportSQLiteDatabase
 import android.arch.persistence.room.Database
+import android.arch.persistence.room.Room
 import android.arch.persistence.room.RoomDatabase
-import com.tentwenty.movieticket.feature.shared.model.Data
+import android.content.Context
+import com.tentwenty.movieticket.feature.shared.model.CinemaEntity
 import com.tentwenty.movieticket.feature.shared.model.Movie
+import com.tentwenty.movieticket.feature.shared.model.ShowTime
+import com.tentwenty.movieticket.utils.constants.DBConstants
+import java.util.concurrent.Executors
 
 
-@Database(entities = [Movie::class], version = 1)
+@Database(entities = [Movie::class, CinemaEntity::class, ShowTime::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
+
     abstract fun moviesDao(): MovieDao
+
+    abstract fun cinemasDao(): CinemaDao
+
+
+    companion object {
+        private var INSTANCE: AppDatabase? = null
+
+
+        @Synchronized
+        fun getInstance(context: Context): AppDatabase {
+            if (INSTANCE == null) {
+                INSTANCE = buildDatabase(context)
+            }
+            return INSTANCE as AppDatabase
+        }
+
+        private fun buildDatabase(context: Context): AppDatabase {
+            return Room.databaseBuilder(context,
+                    AppDatabase::class.java,
+                    DBConstants.DB_NAME)
+                    .addCallback(object : RoomDatabase.Callback() {
+                        override fun onCreate(db: SupportSQLiteDatabase) {
+                            super.onCreate(db)
+                            Executors.newSingleThreadScheduledExecutor().execute(Runnable {
+                                getInstance(context).cinemasDao().insert(CinemaEntity.populateData(context))
+                            })
+                        }
+                    })
+                    .build()
+        }
+    }
 }

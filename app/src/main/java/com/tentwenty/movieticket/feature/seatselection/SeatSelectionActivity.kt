@@ -2,20 +2,22 @@ package com.tentwenty.movieticket.feature.seatselection
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.Html
 import android.view.Gravity
-import android.widget.*
-import com.tentwenty.movieticket.R
-import com.tentwenty.movieticket.feature.base.BaseActivity
-import com.tentwenty.movieticket.feature.shared.model.TheaterLayout
-import kotlinx.android.synthetic.main.activity_seat_selection.*
-import javax.inject.Inject
-import android.widget.TableLayout
 import android.view.MenuItem
 import android.view.View
+import android.widget.TableLayout
+import android.widget.TableRow
+import android.widget.TextView
+import android.widget.Toast
+import com.tentwenty.movieticket.R
 import com.tentwenty.movieticket.TenTwentyApp
+import com.tentwenty.movieticket.feature.base.BaseActivity
+import com.tentwenty.movieticket.feature.shared.model.CinemaEntity
 import com.tentwenty.movieticket.feature.shared.model.Movie
+import com.tentwenty.movieticket.feature.shared.model.TheaterLayout
+import kotlinx.android.synthetic.main.activity_seat_selection.*
 import kotlinx.android.synthetic.main.toolbar.*
+import javax.inject.Inject
 
 
 class SeatSelectionActivity : BaseActivity<SeatSelectionView, SeatSelectionPresenter>(), SeatSelectionView, View.OnClickListener {
@@ -65,15 +67,16 @@ class SeatSelectionActivity : BaseActivity<SeatSelectionView, SeatSelectionPrese
 
     override fun createPresenter() = seatselectionPresenter
 
-    override fun renderSeats(seatsList: Array<TheaterLayout>) {
-        mTheaterLayoutList = seatsList
+    override fun renderSeats(cinemaEntity: CinemaEntity) {
+        mTheaterLayoutList = cinemaEntity.theaterLayout.getTheaterLayouts()!!
+
 
         val tableLayoutParams = TableLayout.LayoutParams()
 
         val tableRowParams = TableRow.LayoutParams()
         tableRowParams.setMargins(8, 8, 8, 8)
 
-        seatsList.forEachIndexed { i, rowLayout ->
+        mTheaterLayoutList.forEachIndexed{ i, rowLayout ->
 
             val tableRow = TableRow(this)
 

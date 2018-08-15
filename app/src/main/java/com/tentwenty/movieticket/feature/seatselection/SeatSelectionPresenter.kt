@@ -2,8 +2,6 @@ package com.tentwenty.movieticket.feature.seatselection
 
 import android.util.Log
 import com.tentwenty.movieticket.feature.base.BasePresenter
-import com.tentwenty.movieticket.feature.main.MainInteractor
-import com.tentwenty.movieticket.feature.main.MainView
 import com.tentwenty.movieticket.feature.shared.model.TheaterLayout
 import java.util.*
 import javax.inject.Inject
@@ -12,7 +10,15 @@ class SeatSelectionPresenter @Inject constructor(private val seatSelectionIntera
     fun getData() {
         ifViewAttached { view ->
             view.showLoading()
-            val list = seatSelectionInteractor.getSittingArrangement()
+//            val list = seatSelectionInteractor.getSittingArrangement()
+
+            seatSelectionInteractor.getSittingArrangement().subscribe({ data ->
+                view.renderSeats(data)
+                view.hideLoading()
+            }, { error ->
+                Log.d("Xais", error.localizedMessage)
+                view.hideLoading()
+            })
 
             val model1 = TheaterLayout("F", Arrays.asList(1,1,1,1,1,1,1,1))
             val model2 = TheaterLayout("E", Arrays.asList(2,2,1,1,1,1,1,1))
@@ -31,8 +37,7 @@ class SeatSelectionPresenter @Inject constructor(private val seatSelectionIntera
             list.add(model5)
             list.add(model6)
             list.add(model7)*/
-            view.hideLoading()
-            view.renderSeats(list)
+
         }
     }
 }
