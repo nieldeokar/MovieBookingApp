@@ -39,12 +39,15 @@ Instructions for preparing development environment :
 
     2. Ticket quantity is not specified so I have set it default to 1.
 
-    4. Assuming TheMOVIE DB GET api'/configuration'  call is already happen and I have received the BASE_IMAGE_URL.
+    3. Assuming TheMOVIE DB GET api'/configuration'  call is already happen and I have received the BASE_IMAGE_URL.
 
-    3. No rules regarding which domain network traffic to be allowed. I have set it default to The Movie Db's base API URL and base IMG URL.
+    4. No rules regarding which domain network traffic to be allowed. I have set it default to The Movie Db's base API URL and base IMG URL.
 
-    2. Credit Card information is asked to be stored which is a confidential information and should'nt
+    5. Credit Card information is asked to be stored which is a confidential information and should'nt
     be stored in local device because of which I am stored the encrypted AES string with 'SeatNumber' as seed.
+
+    6. Internet connection is always available on device.
+
 
 
 
