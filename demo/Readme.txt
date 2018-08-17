@@ -20,7 +20,7 @@ Instructions for preparing development environment :
 - Building from Source code :
     1. After setting up the build environment clone the github repository using https://github.com/nieldeokar/nilesh_deokar_tentwenty_assignment.git
 
-    2. Open Android Studio and open the selected the 'Tentwentyapp' folder which you just cloned.
+    2. Open Android Studio and open the 'nilesh_deokar_tentwenty_assignment' folder which you just cloned.
 
     3. Build the app and run in any device or emulator.
 
