@@ -30,11 +30,11 @@
         <activity
             android:name=".feature.showtimes.ShowTimesActivity"
             android:theme="@style/AppTheme.NoActionbar" />
-        <activity android:name=".feature.payment.PaymentActivity"
+        <activity
+            android:name=".feature.payment.PaymentActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionbar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionbar"></activity>
+        <activity android:name=".feature.order.OrderConfirmationActivity"></activity>
     </application>
 
 </manifest>

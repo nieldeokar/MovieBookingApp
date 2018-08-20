@@ -2,6 +2,7 @@ package com.tentwenty.movieticket.di.component
 
 import com.tentwenty.movieticket.di.module.ApplicationModule
 import com.tentwenty.movieticket.feature.main.MainActivity
+import com.tentwenty.movieticket.feature.order.OrderConfirmationActivity
 import com.tentwenty.movieticket.feature.payment.PaymentActivity
 import com.tentwenty.movieticket.feature.seatselection.SeatSelectionActivity
 import com.tentwenty.movieticket.feature.showtimes.ShowTimesActivity
@@ -19,4 +20,6 @@ interface ApplicationComponent {
     fun inject(showTimesActivity: ShowTimesActivity)
 
     fun inject(paymentActivity: PaymentActivity)
+
+    fun inject(orderConfirmationActivity: OrderConfirmationActivity)
 }

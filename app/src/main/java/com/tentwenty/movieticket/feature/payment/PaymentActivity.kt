@@ -9,6 +9,7 @@ import com.tentwenty.movieticket.R
 import com.tentwenty.movieticket.TenTwentyApp
 import com.tentwenty.movieticket.feature.base.BaseActivity
 import com.tentwenty.movieticket.feature.main.MainActivity
+import com.tentwenty.movieticket.feature.order.OrderConfirmationActivity
 import com.tentwenty.movieticket.feature.repository.PaymentPresenter
 import com.tentwenty.movieticket.feature.shared.model.CardInfo
 import com.tentwenty.movieticket.feature.shared.model.OrdersEntity
@@ -84,9 +85,12 @@ class PaymentActivity : BaseActivity<PaymentView, PaymentPresenter>(), PaymentVi
             isBookingSuccess = true
             showToast(getString(R.string.booking_success))
             // This call should be inside BookingConfirmation Activity
-            presenter.getOrderData(orderId)
-        }
+//            presenter.getOrderData(orderId)
 
+            val intent = Intent(this,OrderConfirmationActivity::class.java)
+            intent.putExtra(OrderConfirmationActivity.ORDER_ID,orderId)
+            startActivity(intent)
+        }
     }
 
     override fun showOrderDetails(ordersEntity: OrdersEntity) {
