@@ -15,9 +15,12 @@ class OrdersEntity(
         var seatNumber: String = "",
 
         @ColumnInfo(name = "card_details")
-        var cardDetails: String = ""
+        var cardDetails: String = "",
+
+        @ColumnInfo(name = "show_id")
+        var showId: Int = 0
 ) {
     override fun toString(): String {
-                return "order_id = $id \nseat_no = $seatNumber \ncard_details = $cardDetails"
+        return "order_id = $id \nseat_no = $seatNumber \ncard_details = $cardDetails"
     }
 }

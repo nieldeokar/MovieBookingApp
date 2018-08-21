@@ -5,6 +5,7 @@ import com.tentwenty.movieticket.R
 import com.tentwenty.movieticket.TenTwentyApp
 import com.tentwenty.movieticket.feature.base.BaseActivity
 import com.tentwenty.movieticket.feature.shared.model.OrdersEntity
+import kotlinx.android.synthetic.main.activity_order_confirmation.*
 import javax.inject.Inject
 
 class OrderConfirmationActivity : BaseActivity<OrderView,OrderPresenter>(), OrderView {
@@ -30,6 +31,9 @@ class OrderConfirmationActivity : BaseActivity<OrderView,OrderPresenter>(), Orde
 
     override fun showOrderDetails(ordersEntity: OrdersEntity) {
         showToast(ordersEntity.toString())
+
+        event_name_tv.text = ordersEntity.showId.toString()
+        seats_no_tv.text = ordersEntity.seatNumber
     }
 
 }

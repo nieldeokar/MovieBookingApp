@@ -12,5 +12,10 @@
 
     <color name="red">#BBff0000</color>
 
+    <color name="qp_alert_button_pressed">#ffe6e6e6</color>
+    <color name="login_btn_border_color">#ff951016</color>
+    <color name="login_btn_color">#ffd71921</color>
+    <color name="login_btn_selected_color">#ffbb151c</color>
+    <color name="play_ticket">#ff7cc576</color>
 
 </resources>

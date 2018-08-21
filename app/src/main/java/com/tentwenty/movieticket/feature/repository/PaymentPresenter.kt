@@ -73,7 +73,7 @@ class PaymentPresenter @Inject constructor(private val paymentInteractor: Paymen
     private fun saveBookingIntoDatabase(view: PaymentView, seatNumber: String, cardInfo: CardInfo) {
 
         val encryptedString = AESEncyption.encrypt(cardInfo.toString(), seatNumber)
-        val ordersEntity = OrdersEntity(0, seatNumber, encryptedString)
+        val ordersEntity = OrdersEntity(0, seatNumber, encryptedString,showTimeEntity.id)
 
         paymentInteractor.confirmBooking(showTimeEntity, ordersEntity).subscribe({ data ->
             view.redirectToBookingConfirmation(data)

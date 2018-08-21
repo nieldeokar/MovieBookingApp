@@ -80,7 +80,7 @@
                     </RelativeLayout>
 
                     <TextView
-                        android:id="@+id/event_name_tv"
+                        android:id="@id/event_name_tv"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
@@ -121,7 +121,6 @@
                             android:layout_marginTop="1.0dip"
                             android:ellipsize="end"
                             android:singleLine="true"
-                            android:text="1"
                             android:textColor="#ffffffff" />
                     </RelativeLayout>
 
@@ -274,8 +273,7 @@
                                 android:text="Thank you!"
                                 android:textColor="#ff403e3e"
                                 android:textSize="24.0sp"
-                                android:visibility="gone"
-                                />
+                                android:visibility="gone" />
 
                             <TextView
                                 android:id="@+id/tvBookingId"
@@ -300,7 +298,7 @@
                                 android:layout_marginLeft="10.0dip"
                                 android:layout_marginRight="10.0dip"
                                 android:background="@drawable/barcode_rect_shape"
-                                android:visibility="visible">
+                                android:visibility="gone">
 
                                 <RelativeLayout
                                     android:id="@+id/barcode_layout"
@@ -323,7 +321,7 @@
                                     </RelativeLayout>
 
                                     <TextView
-                                        android:id="@+id/barcode_tv"
+                                        android:id="@id/barcode_tv"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_below="@id/rlBarcode"
@@ -489,7 +487,6 @@
         android:layout_height="fill_parent"
         android:background="@android:color/white"
         android:fillViewport="true"
-
         android:scrollbars="none">
 
         <RelativeLayout
@@ -523,8 +520,8 @@
                         android:src="@drawable/btn_info_gray"
                         android:visibility="gone" />
 
-                    <TextView
-                        android:id="@+id/showName"
+                    <com.bt.bms.widget.RobotoCondensedBoldTextView
+                        android:id="@id/showName"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="2.0dip"

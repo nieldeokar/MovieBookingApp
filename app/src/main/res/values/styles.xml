@@ -13,4 +13,31 @@
         <item name="windowNoTitle">true</item>
         <item name="windowActionModeOverlay">true</item>
     </style>
+
+    <style name="BookMyShowAppTheme" parent="@android:style/Theme.NoTitleBar" />
+
+    <style name="DetailExtraSmall" parent="@style/BookMyShowAppTheme">
+        <item name="android:textSize">14.0sp</item>
+        <item name="android:lineSpacingExtra">1.0dip</item>
+    </style>
+
+    <style name="DetailLargeStyle" parent="@style/BookMyShowAppTheme">
+        <item name="android:textSize">18.0sp</item>
+        <item name="android:lineSpacingExtra">1.0dip</item>
+    </style>
+
+    <style name="DetailSmall" parent="@style/BookMyShowAppTheme">
+        <item name="android:textSize">16.0sp</item>
+        <item name="android:lineSpacingExtra">1.0dip</item>
+    </style>
+
+    <style name="HeaderStyle" parent="@style/BookMyShowAppTheme">
+        <item name="android:textSize">22.0sp</item>
+        <item name="android:lineSpacingExtra">1.0dip</item>
+    </style>
+
+    <style name="SubHeaderStyle" parent="@style/BookMyShowAppTheme">
+        <item name="android:textSize">20.0sp</item>
+        <item name="android:lineSpacingExtra">1.0dip</item>
+    </style>
 </resources>
