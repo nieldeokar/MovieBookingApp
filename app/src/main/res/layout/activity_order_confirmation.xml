@@ -661,8 +661,8 @@
                     android:scaleType="centerInside"
                     android:src="@drawable/server_error" />
 
-                <BoldTextView
-                    android:id="@id/txvErrorMessage"
+                <TextView
+                    android:id="@+id/txvErrorMessage"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"

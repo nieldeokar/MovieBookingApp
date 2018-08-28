@@ -8,7 +8,6 @@ import android.view.View
 import com.tentwenty.movieticket.R
 import com.tentwenty.movieticket.TenTwentyApp
 import com.tentwenty.movieticket.feature.base.BaseActivity
-import com.tentwenty.movieticket.feature.main.DividerItemDecoration.VERTICAL_LIST
 import com.tentwenty.movieticket.feature.shared.model.Movie
 import com.tentwenty.movieticket.feature.showtimes.ShowTimesActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -38,7 +37,7 @@ class MainActivity : BaseActivity<MainView, MainPresenter>(), MainView, MainAdap
         rcyclerMain.setHasFixedSize(true)
         rcyclerMain.adapter = mainAdapter
         rcyclerMain.itemAnimator = DefaultItemAnimator()
-        rcyclerMain.addItemDecoration(DividerItemDecoration(this,  VERTICAL_LIST))
+        rcyclerMain.addItemDecoration(DividerItemDecoration(this,  DividerItemDecoration.VERTICAL_LIST))
         mainAdapter.setOnItemClickListener(this)
     }
 

@@ -17,5 +17,7 @@
     <color name="login_btn_color">#ffd71921</color>
     <color name="login_btn_selected_color">#ffbb151c</color>
     <color name="play_ticket">#ff7cc576</color>
+    <color name="header_black">#ff282828</color>
+
 
 </resources>
