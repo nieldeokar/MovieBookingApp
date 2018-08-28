@@ -33,8 +33,9 @@
         <activity
             android:name=".feature.payment.PaymentActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionbar"></activity>
-        <activity android:name=".feature.order.OrderConfirmationActivity"></activity>
+            android:theme="@style/AppTheme.NoActionbar" />
+        <activity android:name=".feature.order.OrderConfirmationActivity" />
+        <activity android:name=".feature.moviedetail.MovieDetailActivity"></activity>
     </application>
 
 </manifest>
